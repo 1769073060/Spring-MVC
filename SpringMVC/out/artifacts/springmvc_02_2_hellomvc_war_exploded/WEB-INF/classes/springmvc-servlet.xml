@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--处理器映射器,适配器,视图解析器,是SpringMVC的核心三要素
+        要让SpringMVC跑起来必须要有这三样,不让跑不起来
+    -->
+    <!--处理器映射器   这里的Mapping回去找下面bean的id="/hello"-->
+    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
+    <!--处理器适配器-->
+    <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>
+    <!--视图解析器   :  模板引擎  Thymeleaf  Freemarker-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          id="InternalResourceViewResolver">
+        <!--前缀-->
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <!--后缀-->
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!--BeanNameUrlHandlerMapping:bean-->
+    <bean id="/text" class="com.rzk.controller.HelloController"/>
+
+</beans>
+
+
+
